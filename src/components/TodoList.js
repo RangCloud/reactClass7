@@ -2,11 +2,16 @@ import React, {useState} from "react";
 import "./TodoList.css";
 import TodoItem from "./TodoItem.js";
 
-const TodoList = ({todo})=>{
+const TodoList = ({todo, onUpdate, onDelete})=>{
     const [search, setSearch] = useState("");
     const onChangeSearch = ({event})=>{
         setSearch(event.target.value);
     }
+    const filteringTodo = ()=>{
+        return search === "" ? todo:
+        todo.filter( (item)=> item.content.includes(search) );
+    }
+
     return(
         <div className="TodoList">
             <h3>Todo List 🌱</h3>
@@ -16,9 +21,11 @@ const TodoList = ({todo})=>{
             placeholder="필터링 검색어 넣어주세요."
             />
             <div>
-                {todo.map((item)=>(
+                {filteringTodo().map((item)=>(
                     <TodoItem key = {item.id}
                     {...item}
+                    onUpdate={onUpdate}
+                    onDelete={onDelete}
                     />
                 ))}
             </div>

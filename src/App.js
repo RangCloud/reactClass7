@@ -5,7 +5,7 @@ import TodoList from "./components/TodoList";
 import React, {useState, useRef} from "react";
 
 const todo_example = [
-  {
+  /* {
     id: 0, isDone: false, content: "할 일 예제 0", createdDate: new Date().getTime()
   },
   {
@@ -13,7 +13,7 @@ const todo_example = [
   },
   {
     id: 2, isDone: false, content: "할 일 예제 2", createdDate: new Date().getTime()
-  }
+  } */
 ]
 
 function App() {
@@ -27,11 +27,23 @@ function App() {
     setTodo([newItem, ...todo]);
     idRef.current += 1;
   }
+  const onUpdate = (id)=>{
+    setTodo(
+      todo.map((item)=> item.id === id? {...item, isDone: !item.isDone} : item )
+    )
+  };
+  const onDelete = (id)=>{
+    setTodo(
+      todo.filter((item)=> item.id !== id)
+    )
+  };
   return (
     <div className="App">
       <Header/>
       <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo}/>
+      <TodoList todo={todo}
+      onUpdate={onUpdate}
+      onDelete={onDelete}/>
     </div>
   );
 }

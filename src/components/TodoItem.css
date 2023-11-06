@@ -16,6 +16,8 @@
     color: gray;
 }
 .button_col button{
+    cursor: pointer;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     background-color: purple;

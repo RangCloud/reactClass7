@@ -16,6 +16,7 @@ const TodoList = ({todo, onUpdate, onDelete})=>{
         <div className="TodoList">
             <h3>Todo List 🌱</h3>
             <input
+            className="searchbar"
             value={search}
             onChange={onChangeSearch}
             placeholder="필터링 검색어 넣어주세요."

@@ -28,7 +28,8 @@ const TodoEditor = ({onCreate})=>{
         <div className="TodoEditor">
             <h3>새로운 Todo 작성하기 ✏</h3>
             <div>
-                <input 
+                <input
+                className="editor_wrapper"
                 ref={inputRef}
                 onChange={onChangeTodo}
                 onKeyDown={onKeyDownHandler}

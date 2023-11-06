@@ -5,3 +5,14 @@
     border: 4px solid rgb(181, 227, 196);
     background-color: rgb(199, 231, 209);
 }
+
+.searchbar{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+}
+.searchbar:focus{
+    outline: none;
+    border: 1px solid purple;
+}

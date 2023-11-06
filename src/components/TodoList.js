@@ -1,10 +1,10 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import "./TodoList.css";
-import TodoItem from "./TodoItem";
+import TodoItem from "./TodoItem.js";
 
 const TodoList = ({todo})=>{
     const [search, setSearch] = useState("");
-    const onChangeSearch = (event)=>{
+    const onChangeSearch = ({event})=>{
         setSearch(event.target.value);
     }
     return(
@@ -16,9 +16,7 @@ const TodoList = ({todo})=>{
             placeholder="필터링 검색어 넣어주세요."
             />
             <div>
-                todo들
-                {{/* TodoItem = (isDone, content, createdDate) */}}
-                {TodoList.map((item)=>(
+                {todo.map((item)=>(
                     <TodoItem key = {item.id}
                     {...item}
                     />

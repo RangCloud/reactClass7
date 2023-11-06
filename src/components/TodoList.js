@@ -1,7 +1,8 @@
 import {useState} from "react";
 import "./TodoList.css";
+import TodoItem from "./TodoItem";
 
-const TodoList = ()=>{
+const TodoList = ({todo})=>{
     const [search, setSearch] = useState("");
     const onChangeSearch = (event)=>{
         setSearch(event.target.value);
@@ -16,6 +17,12 @@ const TodoList = ()=>{
             />
             <div>
                 todo들
+                {{/* TodoItem = (isDone, content, createdDate) */}}
+                {TodoList.map((item)=>(
+                    <TodoItem key = {item.id}
+                    {...item}
+                    />
+                ))}
             </div>
         </div>
     )

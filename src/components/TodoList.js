@@ -4,12 +4,12 @@ import TodoItem from "./TodoItem.js";
 
 const TodoList = ({todo, onUpdate, onDelete})=>{
     const [search, setSearch] = useState("");
-    const onChangeSearch = ({event})=>{
+    const onChangeSearch = (event)=>{
         setSearch(event.target.value);
     }
     const filteringTodo = ()=>{
         return search === "" ? todo:
-        todo.filter( (item)=> item.content.includes(search) );
+        todo.filter( (item)=> item.content.toLowerCase().includes(search.toLowerCase()) );
     }
 
     return(

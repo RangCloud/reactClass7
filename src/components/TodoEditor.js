@@ -1,15 +1,19 @@
 import "./TodoEditor.css";
-import {useState} from "react";
+import {useState, useRef} from "react";
 
 const TodoEditor = ({onCreate})=>{
     const [content, setContent] = useState("");
+    const inputRef = useRef();
 
     const onChangeTodo = (event)=>{
         setContent(event.target.value);
     }
 
     const onSubmit = ()=>{
-        if(!content){return;}
+        inputRef.current.focus();
+        if(!content){
+            return;
+        }
         onCreate(content);
         setContent("");
     }
@@ -25,10 +29,13 @@ const TodoEditor = ({onCreate})=>{
             <h3>새로운 Todo 작성하기 ✏</h3>
             <div>
                 <input 
+                ref={inputRef}
                 onChange={onChangeTodo}
                 onKeyDown={onKeyDownHandler}
+                value={content}
                 placeholder="새로운 Todo..."/>
                 <button onClick={onSubmit}>추가</button>
+                {/* <div>{content}</div> */}
             </div>
         </div>
     )
